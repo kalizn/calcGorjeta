@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -61,20 +61,34 @@ function calc(){
 export default () => {
 
   const [bill, setBill] = useState('');
+  const [bill2, setBill2] = useState('');
   const [tip, setTip] = useState(0);
   const [pct, setPct] = useState(10);
+  const [tip2, setTip2] = useState(0);
 
   const calc = () => {
     let nBill = parseFloat(bill);
     
     if(nBill) {
-      setTip ( (pct/100) * nBill)
-    } else {
-      alert("Digite o valor da conta");
+      setTip ( (pct/100) * nBill);
     }
-
+    setBill2(bill);
   }
 
+  const perc = () => {
+    let nPerc = parseFloat(bill);
+    
+    if(nPerc) {
+      setTip2 ( (pct/100) * nPerc);
+    }
+  }
+
+
+  useEffect(()=>{
+    perc();
+  }, [pct]);
+  
+  
   return (
     <Page>
       <HeaderText>Calculadora de Gorjeta</HeaderText>
@@ -98,10 +112,10 @@ export default () => {
           <ResultItem>R$ {parseFloat(bill).toFixed(2)} </ResultItem>
 
           <ResultItemTitle>Valor da Gorjeta</ResultItemTitle>
-          <ResultItem>R$ {tip.toFixed(2)} ({pct}%)</ResultItem>
-
+          <ResultItem>R$ {tip2.toFixed(2)} ({pct}%)</ResultItem>
+        
           <ResultItemTitle>Valor Total</ResultItemTitle>
-          <ResultItem>R$ {(parseFloat(bill) + tip).toFixed(2)}</ResultItem>
+          <ResultItem>R$ {(parseFloat(bill2) + tip).toFixed(2)}</ResultItem>
         </ResultArea>
       }
     </Page>
