@@ -25,9 +25,6 @@
         "backgroundColor": "#FFFFFF"
       },
       "package":"com.kalizn.calcGorjeta"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
