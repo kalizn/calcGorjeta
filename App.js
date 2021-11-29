@@ -91,7 +91,7 @@ export default () => {
   
   return (
     <Page>
-      <HeaderText>Calculadora de Gorjeta</HeaderText>
+      <HeaderText>Calculadora de Gorjeta. by: Antonio Neto</HeaderText>
       <Input 
         placeholder="Quanto deu a conta?"
         placeholderTextColor="#000"
